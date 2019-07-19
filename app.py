@@ -21,11 +21,17 @@ def default():
 @app.route("/sms", methods=['POST'])
 def sms_reply():
     # Fetch message
-    msg = request.form.get('NumMedia')
+    getImage = request.form.get('NumMedia')
 
     # Create reply
     resp = MessagingResponse()
-    resp.message("Your response: {}".format(msg))
+    
+    if(getImage != 0){
+        resp.message("I got an image")
+    }
+    else{
+        resp.message("I got a text")
+    }
 
     return str(resp)
 

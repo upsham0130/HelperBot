@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def default():
-    return ""
+    return row
 
 @app.route("/sms", methods=['GET', 'POST'])
 def sms_reply():

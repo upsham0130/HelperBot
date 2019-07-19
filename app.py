@@ -21,7 +21,7 @@ def default():
 @app.route("/sms", methods=['POST'])
 def sms_reply():
     # Fetch message
-    msg = request.form.get('To')
+    msg = request.form.get('mediaUrl')
 
     # Create reply
     resp = MessagingResponse()

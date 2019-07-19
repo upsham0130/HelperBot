@@ -16,12 +16,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def default():
-    return row
+    return ""
 
-@app.route("/sms", methods=['GET', 'POST'])
+@app.route("/sms", methods=['POST'])
 def sms_reply():
     # Fetch message
-    msg = request.form.get('To')
+    msg = request.form.get('Body')
 
     # Create reply
     resp = MessagingResponse()

@@ -34,7 +34,7 @@ def sms_reply():
     else:
         resp.message("I got a text")
 
-    return str(resp + url)
+    return str(resp + urlresp)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -26,15 +26,15 @@ def sms_reply():
 
     # Create reply
     resp = MessagingResponse()
-    urlresp = MessagingResponse()
+   # urlresp = MessagingResponse()
     
     if getImage != "0":
         resp.message("I got an image")
-        urlresp.message(getUrl)
+        #urlresp.message(getUrl)
     else:
         resp.message("I got a text")
 
-    return str(resp + urlresp)
+    return str(resp)
 
 if __name__ == "__main__":
     app.run(debug=True)

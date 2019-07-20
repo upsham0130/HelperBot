@@ -22,16 +22,19 @@ def default():
 def sms_reply():
     # Fetch message
     getImage = request.form.get('NumMedia')
+    getUrl = request.form.get('MediaUrl0')
 
     # Create reply
     resp = MessagingResponse()
+    urlresp = MessagingResponse()
     
     if getImage != "0":
         resp.message("I got an image")
+        urlresp.message(getUrl)
     else:
         resp.message("I got a text")
 
-    return str(resp)
+    return str(resp + url)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -26,9 +26,9 @@ def sms_reply():
     # Create reply
     resp = MessagingResponse()
     
-    if getImage == 1:
+    if getImage != "0":
         resp.message("I got an image")
-    elif getImage == 0:
+    else:
         resp.message("I got a text")
 
     return str(resp)

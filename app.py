@@ -29,7 +29,7 @@ def sms_reply():
    # urlresp = MessagingResponse()
     
     if getImage != "0":
-        resp.message("URL: " + getUrl)
+        resp.message(getUrl)
         #urlresp.message(getUrl)
     else:
         resp.message("I got a text")

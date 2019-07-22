@@ -21,8 +21,9 @@ def default():
 @app.route("/sms", methods=['POST'])
 def sms_reply():
     # Fetch message
-    getImage = request.form.get('NumMedia')
-    getUrl = request.form.get('MediaUrl{idx}')
+    getMedia = int(request.values.get("NumMedia"))
+    for idx in range(getMedia):
+        getUrl = request.values.get(f'MediaUrl{idx}')
 
     # Create reply
     resp = MessagingResponse()

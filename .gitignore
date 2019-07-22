@@ -1,3 +1,4 @@
 localserver/
 *.pyc
 creds.*
+creds.json

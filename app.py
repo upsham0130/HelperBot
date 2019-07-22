@@ -31,6 +31,7 @@ def sms_reply():
     
     if getMedia != 0:
         resp.message(getUrl)
+        sheet.update_cell(2, 3, f'=IMAGE(\"{getUrl}\")')
     else:
         resp.message("I got a text")
 

@@ -24,13 +24,15 @@ def sms_reply():
     getMedia = int(request.values.get("NumMedia"))
     for idx in range(getMedia):
         getUrl = request.values.get(f'MediaUrl{idx}')
+    getMessage = request.values.get("Body")
 
     # Create reply
     resp = MessagingResponse()
-   # urlresp = MessagingResponse()
+    urlresp = MessagingResponse()
     
     if getMedia != 0:
-        resp.message(getUrl)
+        resp.message(getMessage)
+
         sheet.update_cell(2, 3, f'=IMAGE(\"{getUrl}\")')
     else:
         resp.message("I got a text")

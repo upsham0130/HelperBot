@@ -44,7 +44,7 @@ def sms_reply():
     urlresp = MessagingResponse()
     
     if getMedia != 0:
-        resp.message(getMessage)
+        resp.message(getMessage[11,21])
 
         sheet.update_cell(2, 3, f'=IMAGE(\"{getUrl}\")')
     else:

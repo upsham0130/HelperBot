@@ -50,7 +50,7 @@ def sms_reply():
 
     # Add Info If Record Does Not Exist
     if numberQuery == None and getMessage == '/start':
-        newNumb = NumberTable(sendNum, 0)
+        newNumb = NumberTable(usernumber=sendNum, location=0)
         db.session.add(newNumb)
         db.session.commit()
         numberQuery = NumberTable.query.filter_by(usernumber=sendNum).first()

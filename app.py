@@ -9,7 +9,6 @@ scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/aut
 creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
 client = gspread.authorize(creds)
 sheet = client.open("WhatsappBot Data").sheet1
-data = sheet.get_all_records()
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///numbers.db'
@@ -56,6 +55,19 @@ def sms_reply():
         numberQuery = NumberTable.query.filter_by(usernumber=sendNum).first()
         Id = numberQuery.index
         newRow = ["","","","",Id]
+        data = sheet.get_all_records()
+        sheet.insert_row(newRow, len(data)+2)
+        resp.message(respDict[0])
+    elif numberQuery != None and numberQuery.location == 4 and getMessage == '/start':
+        numberQuery.usernumber = 0
+        db.session.commit()
+        newNumb = NumberTable(usernumber=sendNum, location=0)
+        db.session.add(newNumb)
+        db.session.commit()
+        numberQuery = NumberTable.query.filter_by(usernumber=sendNum).first()
+        Id = numberQuery.index
+        newRow = ["","","","",Id]
+        data = sheet.get_all_records()
         sheet.insert_row(newRow, len(data)+2)
         resp.message(respDict[0])
     elif numberQuery != None:
@@ -81,17 +93,17 @@ def sms_reply():
             if getMedia != 0:
                 resp.message(respDict[loc+1])
                 sheet.update_cell(Id+1, 4, f'=IMAGE(\"{getUrl}\")')
-                numberQuery.usernumber = 0
+                numberQuery.location = 4
                 db.session.commit()
             elif getMessage.lower() == "no":
                 resp.message(respDict[loc+1])
                 sheet.update_cell(Id+1, 4, 'None Provided')
-                numberQuery.usernumber = 0
+                numberQuery.location = 4
                 db.session.commit()
             else:
                 resp.message("Sorry, I didn't get that. Please try again")
     else:
-        resp.message("To start a new prasanf type \"/start\"")
+        resp.message("To start a new prasang type \"/start\"")
 
     
     return str(resp)

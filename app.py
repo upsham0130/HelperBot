@@ -31,13 +31,13 @@ def default():
 def sms_reply():
     # Fetch Info
     info = NumberTable.query.all()
-    sendNumber = request.values.get("_From")
+    sendNumber = request.values.get("From")
 
     # Fetch message
     getMedia = int(request.values.get("NumMedia"))
     for idx in range(getMedia):
         getUrl = request.values.get(f'MediaUrl{idx}')
-    getMessage = request.values.get("_From")
+    getMessage = request.values.get("From")
 
     # Create reply
     resp = MessagingResponse()

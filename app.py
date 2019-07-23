@@ -78,18 +78,22 @@ def sms_reply():
             numberQuery.location = 3
             db.session.commit()
         elif loc == 3: 
+            '''
             if getMedia != 0:
                 resp.message(respDict[loc+1])
                 sheet.update_cell(Id+1, 4, f'=IMAGE(\"{getUrl}\")')
-                NumberTable.query.get(Id).delete()
+                numberQuery.usernumber = 0
                 db.session.commit()
             elif getMessage.lower() == "no":
                 resp.message(respDict[loc+1])
                 sheet.update_cell(Id+1, 4, 'None Provided')
-                NumberTable.query.get(Id).delete()
+                numberQuery.usernumber = 0
                 db.session.commit()
             else:
                 resp.message("Sorry, I didn't get that. Please try again")
+            '''
+            numberQuery.location = 0
+            b.session.commit()
     else:
         resp.message("To start a new prasanf type \"/start\"")
 

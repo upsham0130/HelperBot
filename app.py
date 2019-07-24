@@ -109,9 +109,9 @@ def sms_reply():
     return str(resp)
 
 @app.route("/caffeinate", methods=['GET', 'POST'])
-    def caffeinate():
-        if request.method == 'POST':
-            return(jsonify({"response":"#teamNoSleep"}))
+def caffeinate():
+    if request.method == 'POST':
+        return(jsonify({"response":"#teamNoSleep"}))
 
 if __name__ == "__main__":
     app.run(debug=True)

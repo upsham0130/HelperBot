@@ -38,7 +38,7 @@ def sms_reply():
     # Create Reponse Dictionary
     respDict =	{
         0: "Jay Swaminarayan! Welcome to the Prasang Bot. Please start by telling me the name of the karyakar involved in the prasang:",
-        1: "And where did the prasang take place?",
+        1: "And when and where did the prasang take place?",
         2: "Great! Now tell me the prasang",
         3: "Amazing! Do you have any pictures of this karyakar? If no type \"no\"",
         4: "Thank you for submitting your prasang! To send another type \"/start\""
